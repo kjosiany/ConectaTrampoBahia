@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formalize-se | ConectaTrampo Bahia</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #0f6b3e;
+      --primary-dark: #0b4f2e;
+      --secondary: #d96b1c;
+      --secondary-dark: #b45715;
+      --bg: #f4fbf7;
+      --text: #2d3436;
+      --white: #ffffff;
+      --shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 50px 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    header img {
+      max-width: 220px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: -30px auto 0;
+      padding: 0 20px 40px;
+    }
+
+    .btn-voltar {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary-dark);
+      margin: 40px 0 30px;
+      font-weight: 600;
+    }
+
+    .curso-box {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 25px;
+      box-shadow: var(--shadow);
+      border: 1px solid #eee;
+      transition: transform 0.3s ease;
+    }
+
+    .curso-box:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+    }
+
+    .curso-box h4 {
+      font-size: 1.2rem;
+      margin: 0 0 12px 0;
+      color: var(--primary);
+    }
+
+    .curso-box p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .botao-curso {
+      display: inline-block;
+      background-color: var(--secondary);
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .botao-curso:hover {
+      background-color: var(--secondary-dark);
+      transform: scale(1.05);
+    }
+
+    .aviso {
+      background: #fff8f2;
+      border-left: 4px solid var(--secondary);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #666;
+      font-style: italic;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      color: #999;
+      padding: 50px 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .curso-box {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="./img/ConectaTrampo.PNG" alt="Logo ConectaTrampo" />
+  </header>
+
+  <main class="container">
+    <a href="index.html" class="btn-voltar">← Voltar para Início Bahia</a>
+
+    <div style="background: white; padding: 15px; border-radius: 15px; box-shadow: var(--shadow);">
+      <h2>📚 Cursos Gratuitos e Certificados</h2>
+
+      <div class="curso-box">
+        <h4>🎓 Fundação Bradesco</h4>
+        <p>Cursos gratuitos em TI, Finanças, Administração e Educação, com certificado reconhecido nacionalmente.</p>
+        <a href="https://www.ev.org.br/" target="_blank" class="botao-curso">Acessar Cursos</a>
+      </div>
+
+      <div class="curso-box">
+        <h4>🛠 SENAI Bahia</h4>
+        <p>Capacitação técnica voltada para indústria, tecnologia e serviços, com foco no mercado baiano.</p>
+        <a href="https://www.senaibahia.com.br/" target="_blank" class="botao-curso">Acessar Cursos</a>
+      </div>
+
+      <div class="curso-box">
+        <h4>💼 Sebrae</h4>
+        <p>Perfeito para quem quer empreender ou melhorar sua gestão. Marketing, finanças e inovação com certificado.</p>
+        <a href="https://www.sebrae.com.br/sites/PortalSebrae/cursosonline" target="_blank" class="botao-curso">Acessar Cursos</a>
+      </div>
+
+      <div class="curso-box">
+        <h4>🏛 FGV Online</h4>
+        <p>Cursos gratuitos de curta duração nas áreas de Direito, Economia e Administração.</p>
+        <a href="https://educacao-executiva.fgv.br/cursos/gratuitos" target="_blank" class="botao-curso">Acessar Cursos</a>
+      </div>
+
+      <div class="curso-box">
+        <h4>💻 Microsoft Learn</h4>
+        <p>Aprenda programação, nuvem e inteligência artificial com a plataforma oficial da Microsoft.</p>
+        <a href="https://learn.microsoft.com/pt-br/training/" target="_blank" class="botao-curso">Acessar Cursos</a>
+      </div>
+
+      <div class="aviso">
+        ⚠️ Nota: O ConectaTrampo Bahia apenas indica plataformas confiáveis. Não emitimos certificados e não temos vínculo direto com as instituições mencionadas.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 ConectaTrampo Bahia<br>
+    Conectando talentos baianos a novas oportunidades.</p>
+  </footer>
+
+</body>
+</html>
