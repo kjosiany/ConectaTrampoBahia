@@ -1,0 +1,254 @@
+:root {
+  --bg-color: #f4fbf7;
+  --text-color: #2d3436;
+  --primary: #0f6b3e;        /* Verde Bahia */
+  --primary-dark: #0b4f2e;
+  --secondary: #d96b1c;      /* Laranja queimado */
+  --secondary-dark: #b45715;
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --border-radius: 15px;
+}
+
+/* Base */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+header {
+  padding: 30px 0;
+  text-align: center;
+}
+
+header img {
+  max-width: 260px;
+}
+
+/* Navegação */
+nav {
+  background-color: var(--primary);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: var(--secondary);
+}
+
+/* Hero */
+.hero-section {
+  text-align: center;
+  padding: 60px 30px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: var(--border-radius);
+  margin: 40px 0;
+  box-shadow: 0 10px 30px rgba(15, 107, 62, 0.2);
+}
+
+.hero-section h1 {
+  font-size: 2.3rem;
+  margin-bottom: 15px;
+}
+
+.hero-section p {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  opacity: 0.95;
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badges span {
+  background: rgba(255,255,255,0.18);
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+}
+
+/* Títulos */
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary);
+}
+
+/* Grid */
+.vagas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+  justify-items: center;
+}
+
+/* Card */
+.vaga-card {
+  background: var(--white);
+  border-radius: 12px;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #eee;
+}
+
+.vaga-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  border-color: var(--secondary);
+}
+
+.card-image {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-content h3 {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.card-content span {
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* CTA */
+.cta-box {
+  background: var(--white);
+  padding: 50px 30px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  margin: 40px 0;
+  box-shadow: var(--shadow);
+}
+
+.cta-box.alt {
+  border-top: 5px solid var(--secondary);
+}
+
+.btn-vaga,
+.botao-curso {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+.btn-vaga {
+  background: var(--primary);
+}
+
+.btn-vaga:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+.botao-curso {
+  background: var(--secondary);
+}
+
+.botao-curso:hover {
+  background: var(--secondary-dark);
+  transform: scale(1.05);
+}
+
+/* WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #25D366;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+  z-index: 999;
+}
+
+/* Footer */
+footer {
+  background: #1a1a1a;
+  color: #999;
+  text-align: center;
+  font-size: 13px;
+  padding: 40px 20px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 40px 20px;
+  }
+
+  .hero-section h1 {
+    font-size: 1.6rem;
+  }
+
+  .vagas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu {
+    gap: 15px;
+  }
+}
