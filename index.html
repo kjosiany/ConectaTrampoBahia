@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConectaTrampo Bahia</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNH70NR9HT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KNH70NR9HT');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-color: #f4fbf8;
+      --text-color: #2d3436;
+      --primary: #1e7f5c;         /* Verde principal */
+      --primary-dark: #145c42;
+      --secondary: #d96c1f;       /* Laranja queimado */
+      --white: #ffffff;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --border-radius: 15px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 250px;
+      height: auto;
+    }
+
+    nav {
+      background-color: var(--primary);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: var(--secondary);
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: 60px 30px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border-radius: var(--border-radius);
+      margin: 40px 0;
+      box-shadow: 0 10px 30px rgba(30, 127, 92, 0.25);
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-section p {
+      max-width: 700px;
+      margin: 0 auto 20px;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .badges span {
+      background: rgba(255,255,255,0.15);
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+    }
+
+    main h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    .vagas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .vaga-card {
+      background: var(--white);
+      border-radius: 12px;
+      text-decoration: none;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #eee;
+    }
+
+    .vaga-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      border-color: var(--secondary);
+    }
+
+    .card-image {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      font-size: 17px;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .card-content span {
+      color: var(--secondary);
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta-box {
+      background: var(--white);
+      padding: 50px 30px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box.alt {
+      border-top: 5px solid var(--secondary);
+    }
+
+    .btn-vaga, .botao-curso {
+      padding: 15px 35px;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: 0.3s;
+      margin-top: 15px;
+    }
+
+    .btn-vaga {
+      background: var(--primary);
+    }
+
+    .btn-vaga:hover {
+      background: var(--primary-dark);
+    }
+
+    .botao-curso {
+      background: var(--secondary);
+    }
+
+    .botao-curso:hover {
+      background: #b45718;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      z-index: 999;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: #999;
+      padding: 50px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-section {
+        padding: 40px 20px;
+      }
+
+      .hero-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .vagas-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="./img/ConectaTrampoBahia.png" alt="Logo ConectaTrampo Bahia" class="logo" />
+</header>
+
+<nav>
+  <div class="menu">
+    <a href="#vagas">Vagas</a>
+    <a href="#especialize-se">Cursos</a>
+    <a href="https://www.instagram.com/conectatrampobahia/" target="_blank">Instagram</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<div class="container">
+  <main>
+
+    <section class="hero-section">
+      <h1>ConectaTrampo Bahia 🌴</h1>
+      <p>A ponte gratuita entre você e sua próxima oportunidade em Salvador e região.</p>
+      <div class="badges">
+        <span>Salvador - BA</span>
+        <span>Gratuito</span>
+        <span>@conectatrampobahia</span>
+      </div>
+    </section>
+
+    <h2 id="vagas">Vagas Recentes na Bahia</h2>
+
+    <div class="vagas-grid">
+      <a href="vagas03-03.html" class="vaga-card">
+        <div class="card-image" style="background-image: url('./img/carteiradetrabalho.jpeg');"></div>
+        <div class="card-content">
+          <h3>Vagas 03/03/2026</h3>
+          <span>Ver Detalhes →</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="cta-box">
+      <h2>Divulgue sua Vaga</h2>
+      <p>Anuncie gratuitamente para nossa comunidade da Bahia.</p>
+      <a href="#" target="_blank" class="btn-vaga">Divulgue Agora 📢</a>
+    </div>
+
+    <div class="cta-box alt" id="especialize-se">
+      <h2>Especialize-se</h2>
+      <p>Cursos e oficinas para sua qualificação profissional.</p>
+      <a href="formalize.html" target="_blank" class="botao-curso">Acessar Cursos 🎓</a>
+    </div>
+
+  </main>
+</div>
+
+<a href="#" class="whatsapp-float" target="_blank">Grupo WhatsApp 💬</a>
+
+<footer>
+  <p>© 2026 — ConectaTrampo Bahia</p>
+  <a href="privacidade.html">Política de Privacidade</a>
+</footer>
+
+</body>
+  </html>
