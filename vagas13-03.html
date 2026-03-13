@@ -1,456 +1,588 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ConectaTrampo Bahia 13/03</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vagas 12/03/2026 | ConectaTrampo SP</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  
   <style>
     :root {
-      --primary: #008F6B;
-      --secondary: #005F73;
-      --bg: #E6FFFA;
-      --card: #ffffff;
-      --text: #2b2b2b;
+      --primary: #d32f2f;      
+      --primary-dark: #8e0000; 
+      --secondary: #ffd54f;   
+      --bg: #f4f7f6;
+      --text: #333;
+      --white: #ffffff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background: var(--bg);
+      background-color: var(--bg);
       color: var(--text);
+      margin: 0; padding: 0;
+      line-height: 1.6;
     }
-    header img { max-width: 150px; height: auto; }
 
     header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       padding: 40px 20px;
       text-align: center;
       color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    header h1 {
-      margin: 0;
-      font-weight: 600;
-      font-size: 28px;
+    header img { 
+      max-width: 220px; 
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
+      margin-bottom: 15px;
     }
 
     header p {
-      margin-top: 8px;
+      margin: 0;
       font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       opacity: 0.9;
     }
 
     .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    .search-box {
-      text-align: center;
-      margin-bottom: 35px;
+    .search-container {
+      margin-top: -30px; 
+      position: relative;
+      z-index: 10;
     }
 
-    .search-box input {
+    #busca-vagas {
       width: 100%;
-      max-width: 500px;
-      padding: 12px;
+      padding: 18px 25px;
+      border-radius: 50px;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary-dark);
+      margin: 40px 0 20px;
+      font-weight: 600;
+    }
+
+    .aviso-box {
+      background-color: var(--secondary);
+      border-left: 5px solid var(--primary);
+      padding: 20px;
       border-radius: 10px;
-      border: 2px solid var(--primary);
+      margin-bottom: 30px;
       font-size: 14px;
+      color: #333;
     }
 
-    .vaga {
-      background: var(--card);
+    .vaga{
+      background: var(--white);
+      border-radius: 15px;
       padding: 25px;
-      border-radius: 16px;
       margin-bottom: 25px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      transition: 0.2s ease;
-    }
-
-    .vaga:hover {
-      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border: 1px solid #eee;
     }
 
     .vaga h3 {
       margin-top: 0;
-      color: var(--secondary);
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
     }
 
-    .vaga p {
-      margin: 6px 0;
-      font-size: 14px;
-    }
-
-    .vaga a {
+    .vaga-info p { margin: 8px 0; font-size: 0.95rem; }
+    
+    .btn-contato {
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 15px;
       background: var(--primary);
       color: white;
-      padding: 8px 14px;
-      border-radius: 8px;
+      padding: 12px 25px;
+      border-radius: 50px;
       text-decoration: none;
-      font-size: 13px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s;
     }
 
-    .vaga a:hover {
-      background: var(--secondary);
+    .btn-contato:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
     footer {
+      background-color: #1a1a1a;
+      color: #999;
+      padding: 50px 20px;
       text-align: center;
-      padding: 40px 20px;
-      background: #111;
-      color: #ccc;
-      font-size: 12px;
+      font-size: 13px;
       margin-top: 60px;
     }
 
-    @media(max-width:600px){
-      header h1 {
-        font-size: 22px;
-      }
+    .btn-voltar {
+      display: inline-block;
+      margin: 20px 0;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 30px 15px; }
+      header img { max-width: 180px; }
+      #busca-vagas { padding: 15px 20px; }
     }
   </style>
 </head>
 <body>
- <header>
-    <img src="./img/ConectaTrampo.png" alt="Logo ConectaTrampo" />
+
+  <header>
+    <img src="./img/ConectaTrampo.PNG" alt="Logo ConectaTrampo" />
+    <p>Oportunidades em São Paulo</p>
   </header>
 
-  <div class="container">
-    <h2>📋 Vagas em Belo Horizonte do dia 13/03</h2>
+  <main class="container">
+    <div class="search-container">
+      <input type="text" id="busca-vagas" placeholder="🔍 Qual vaga você busca hoje?">
+    </div>
 
-  <section class="aviso" style="background-color: #d89f65; border: 1px solid #4c7c66; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-  <p><strong>🚨 Aviso:</strong> Todas as vagas aqui são <strong>gratuitas</strong> e públicas. Não cobramos nada para divulgar e não temos vínculo com as empresas.</p>
-  <p>⚠️ <strong>Nunca pague para se candidatar</strong> e não envie documentos pessoais por WhatsApp sem confirmação.</p>
-</section>
+    <a href="index.html" class="btn-voltar">← Voltar para o Início</a>
 
-<div class="vaga">
-  <h3><strong>Estágio em Administração</strong></h3>
-  <p><strong>Empresa:</strong> IEL / Seli'a Feira</p>
-  <p><strong>Descrição da vaga:</strong> Apoio na emissão de documentos acadêmicos, lançamento de dados no sistema escolar, organização de documentos, apoio à gestão escolar, controle de arquivos e suporte em auditorias. Requisito: Superior em Administração (3º ao 7º semestre).</p>
-  <p><strong>Salário:</strong> R$ 600,00 (Bolsa auxílio) + R$ 200,00 (Auxílio Transporte)</p>
-  <p><strong>Horário:</strong> Segunda a sexta, das 07:00 às 12:00 (25h semanais)</p>
-  <p><strong>Local:</strong> Feira de Santana / BA</p>
-  <p><strong>Benefícios:</strong> Auxílio Transporte (Cartão Via Feira).</p>
+    <h2>📋 Vagas Atualizadas - 12/03/2026</h2>
+
+        <section class="aviso-box">
+      <strong>🚨 CUIDADO:</strong> O ConectaTrampo SP não cobra taxas. Se alguém pedir dinheiro para exames ou uniformes, é golpe! <strong>Denuncie.</strong>
+    </section>
+
+    <div id="lista-vagas">
+
+  <div class="vaga">
+  <h3><strong>Vendedor(a) de Ótica</strong></h3>
+  <p><strong>Empresa:</strong> Óticas Carol (Recrutamento por Maria’s Psicologia Organizacional & RH)</p>
+  <p><strong>Descrição da vaga:</strong> Atendimento consultivo, venda de armações e lentes, ajustes básicos, organização de vitrine e acompanhamento de metas. Necessário experiência comprovada em ótica.</p>
+  <p><strong>Salário:</strong> R$ 2.120,00 + Comissão (2% a 3%) + Premiações</p>
+  <p><strong>Local:</strong> Shopping Granja Viana – Cotia/SP.</p>
+  <p><strong>Benefícios:</strong> Vale-refeição (R$ 22,00/dia) e Vale-transporte.</p>
   <p><strong>Contato:</strong><br>
-    Site: <a href="https://www.ielbahia.com.br">www.ielbahia.com.br</a><br>
-    WhatsApp: <a href="https://wa.me/557536029732">(75) 3602-9732</a>
+    WhatsApp: <a href="https://wa.me/5511994844425?text=Tenho%20interesse%20na%20vaga%20de%20Vendedor%20de%20Otica%20em%20Cotia" target="_blank">(11) 99484-4425 (Grasyelle)</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar organização com documentos e familiaridade com sistemas de gestão acadêmica. Código da vaga: 23680.
+    <strong>Como se destacar:</strong> Ter disponibilidade para início imediato, perfil proativo para vendas em shopping e residir próximo à Rodovia Raposo Tavares.
   </div>
 </div>
 
-<div class="vaga">
-  <h3><strong>Estágio Técnico em Administração</strong></h3>
-  <p><strong>Empresa:</strong> IEL / Seli'a Feira</p>
-  <p><strong>Descrição da vaga:</strong> Atendimento presencial e telefônico, suporte em agendamentos, ordens de serviço, pedidos de peças e organização da recepção. Requisito: Cursando Técnico em Administração (1º ao 3º período).</p>
-  <p><strong>Salário:</strong> R$ 1.000,00 (Bolsa auxílio)</p>
-  <p><strong>Horário:</strong> Segunda a sexta, das 08:00 às 12:00 e 14:00 às 16:00 (30h semanais)</p>
-  <p><strong>Local:</strong> Feira de Santana / BA</p>
-  <p><strong>Benefícios:</strong> Auxílio Transporte de R$ 100,00.</p>
-  <p><strong>Contato:</strong><br>
-    Site: <a href="https://www.ielbahia.com.br">www.ielbahia.com.br</a><br>
-    WhatsApp: <a href="https://wa.me/557536029732">(75) 3602-9732</a>
-  </p>
-  <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Excelente comunicação verbal e habilidade em lidar com fluxo de clientes e organização de processos. Código da vaga: 23767.
-  </div>
-</div>
 
-<div class="vaga">
-  <h3><strong>Estágio em Licenciatura em Química</strong></h3>
-  <p><strong>Empresa:</strong> IEL / Seli'a Feira</p>
-  <p><strong>Descrição da vaga:</strong> Apoio na organização de atividades pedagógicas, promoção de interações positivas com alunos, auxílio na preparação de materiais didáticos e confecção de documentos acadêmicos. Requisito: Licenciatura em Química (3º ao 7º semestre).</p>
-  <p><strong>Salário:</strong> R$ 600,00 (Bolsa auxílio) + R$ 200,00 (Auxílio Transporte)</p>
-  <p><strong>Horário:</strong> Segunda a sexta, das 07:00 às 12:00 (25h semanais)</p>
-  <p><strong>Local:</strong> Feira de Santana / BA</p>
-  <p><strong>Benefícios:</strong> Auxílio Transporte (Cartão Via Feira).</p>
+  <div class="vaga">
+  <h3><strong>Frente de Caixa</strong></h3>
+  <p><strong>Empresa:</strong> Grande Rede de Supermercados</p>
+  <p><strong>Descrição da vaga:</strong> Atendimento ao cliente e operação de caixa. Não é necessário experiência anterior.</p>
+  <p><strong>Salário:</strong> R$ 1.726,00 + R$ 209,00 (Quebra de caixa)</p>
+  <p><strong>Local:</strong> Bairro Luxemburgo - Belo Horizonte/MG.</p>
+  <p><strong>Benefícios:</strong> Alimentação na empresa, Transporte, Plano de saúde e odontológico, Cartão farmácia, Convênios educacionais, Seguro de vida, Descontos e crédito em compras, Convênio SESC, Clube Prime/Certo e até 20% de desconto na conta de energia.</p>
   <p><strong>Contato:</strong><br>
-    Site: <a href="https://www.ielbahia.com.br">www.ielbahia.com.br</a><br>
-    WhatsApp: <a href="https://wa.me/557536029732">(75) 3602-9732</a>
+    WhatsApp: <a href="https://wa.me/5531984026251?text=Tenho%20interesse%20na%20vaga%20de%20Frente%20de%20Caixa%20em%20Belo%20Horizonte" target="_blank">(31) 98402-6251 (Júlia)</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar proatividade na interação com alunos e precisão na confecção de materiais educativos. Código da vaga: 23681.
-  </div>
-</div>
-
-<div class="vaga">
-  <h3><strong>Operador de Secador</strong></h3>
-  <p><strong>Empresa:</strong> Irmãos Gatto Agro</p>
-  <p><strong>Descrição da vaga:</strong> Operar secador de grãos, monitorar temperatura/umidade, controlar fluxo de grãos, realizar limpeza do setor e manutenção básica do equipamento. Requer ensino médio (completo ou cursando) e senso de responsabilidade.</p>
-  <p><strong>Salário:</strong> Compatível com o mercado</p>
-  <p><strong>Horário:</strong> Não informado</p>
-  <p><strong>Local:</strong> Luís Eduardo Magalhães / BA</p>
-  <p><strong>Benefícios:</strong> Auxílio Alimentação e Parceria com Assistência Médica.</p>
-  <p><strong>Contato:</strong><br>
-    WhatsApp: <a href="https://wa.me/5577999715884">(77) 99971-5884</a><br>
-    E-mail: <a href="mailto:selecao@irmaosgatto.com.br">selecao@irmaosgatto.com.br</a>
-  </p>
-  <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar experiência prévia em armazém ou secagem de grãos e alto nível de comprometimento.
+    <strong>Como se destacar:</strong> Residir na região do Bairro Luxemburgo e ter disponibilidade para o horário das 13:00 às 22:20.
   </div>
 </div>
 
 
 <div class="vaga">
-  <h3><strong>Aux. Cabeleireira</strong></h3>
-  <p><strong>Empresa:</strong> Grupo RR - Pessoas e Performance</p>
-  <p><strong>Descrição da vaga:</strong> Suporte nas atividades do salão, auxílio na aplicação de colorações e tinturas, auxílio em procedimentos químicos, preparação e organização de materiais e manutenção da limpeza do local. Requer ensino médio completo, perfil comunicativo e experiência mínima de 6 meses na área. Curso de cabeleireira é um diferencial.</p>
-  <p><strong>Salário:</strong> Compatível com o mercado</p>
-  <p><strong>Horário:</strong> Não informado</p>
-  <p><strong>Local:</strong> Feira de Santana / BA</p>
-  <p><strong>Benefícios:</strong> Auxílio Transporte e Assistência Odontológica.</p>
+  <h3><strong>Vendedor(a) de Ótica</strong></h3>
+  <p><strong>Empresa:</strong> Óticas Carol (Recrutamento por Maria’s Psicologia Organizacional & RH)</p>
+  <p><strong>Descrição da vaga:</strong> Atendimento consultivo, venda de armações e lentes, ajustes básicos e organização de vitrine. Necessário experiência comprovada em ótica.</p>
+  <p><strong>Salário:</strong> R$ 2.120,00 + Comissão (2% a 3%) + Premiações</p>
+  <p><strong>Local:</strong> Raposo Shopping – São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> Vale-refeição (R$ 22,00/dia) e Vale-transporte.</p>
   <p><strong>Contato:</strong><br>
-    E-mail: <a href="mailto:contato@grrgestao.com.br">contato@grrgestao.com.br</a>
+    WhatsApp: <a href="https://wa.me/5511994844425?text=Tenho%20interesse%20na%20vaga%20de%20Vendedor%20de%20Otica%20no%20Raposo%20Shopping" target="_blank">(11) 99484-4425 (Grasyelle)</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Possuir curso técnico na área e demonstrar proatividade no suporte aos procedimentos químicos.
+    <strong>Como se destacar:</strong> Possuir experiência prévia com vendas em shopping e disponibilidade para início imediato.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Auxiliar de Limpeza</strong></h3>
+  <p><strong>Empresa:</strong> Não informada (Condomínios e Escolas)</p>
+  <p><strong>Descrição da vaga:</strong> Atuação em limpeza e conservação de ambientes em condomínios e escolas na região do Eloy Chaves.</p>
+  <p><strong>Salário:</strong> R$ 1.837,40 + Prêmio Assiduidade (R$ 315,00)</p>
+  <p><strong>Local:</strong> Região do Eloy Chaves - Jundiaí/SP.</p>
+  <p><strong>Benefícios:</strong> VT, VR (R$ 21,80/dia), Cesta Básica (R$ 151,91), Auxílio Familiar, Convênios Odonto e Farmácia, Gympass e descontos em lazer (SESC/Hopi Hari).</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511997312639?text=Tenho%20interesse%20na%20vaga%20de%20Auxiliar%20de%20Limpeza%20em%20Jundiai" target="_blank">(11) 99731-2639 (Giovanna)</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Residir próximo à região do Eloy Chaves e possuir disponibilidade para escala 6x1.
   </div>
 </div>
 
 <div class="vaga">
-  <h3><strong>Estágio em Licenciatura em Pedagogia</strong></h3>
-  <p><strong>Empresa:</strong> IEL / Seli'a Feira</p>
-  <p><strong>Descrição da vaga:</strong> Apoio na organização de atividades pedagógicas planejadas pelo professor, engajamento de alunos, auxílio em materiais didáticos e suporte administrativo escolar. Requisito: Licenciatura em Pedagogia (3º ao 6º semestre).</p>
-  <p><strong>Salário:</strong> R$ 600,00 (Bolsa auxílio) + R$ 200,00 (Auxílio Transporte)</p>
-  <p><strong>Horário:</strong> Segunda a sexta, das 07:00 às 12:00 (25h semanais)</p>
-  <p><strong>Local:</strong> Feira de Santana / BA</p>
-  <p><strong>Benefícios:</strong> Auxílio Transporte (Cartão de Transporte).</p>
+  <h3><strong>Representante I</strong></h3>
+  <p><strong>Empresa:</strong> Shopee (Recrutamento por Luandre)</p>
+  <p><strong>Descrição da vaga:</strong> Oportunidade para 1º emprego em escalas 6x2 ou 6x1. Requer Ensino Fundamental completo.</p>
+  <p><strong>Salário:</strong> R$ 2.110,00</p>
+  <p><strong>Local:</strong> Franco da Rocha/SP.</p>
+  <p><strong>Benefícios:</strong> Fretado, Refeitório e Cesta Básica.</p>
   <p><strong>Contato:</strong><br>
-    Site: <a href="https://www.ielbahia.com.br">www.ielbahia.com.br</a><br>
-    WhatsApp: <a href="https://wa.me/557536029732">(75) 3602-9732</a>
+    WhatsApp: <a href="https://wa.me/5511975432632?text=Tenho%20interesse%20na%20vaga%20de%20Representante%20I%20em%20Franco%20da%20Rocha" target="_blank">(11) 97543-2632</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Mostrar bom relacionamento interpessoal e compromisso com as normas educacionais vigentes. Código da vaga: 23679.
+    <strong>Como se destacar:</strong> Residir em Franco da Rocha ou região próxima para facilitar o uso do fretado.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Estágio de Administrativo / Compras</strong></h3>
+  <p><strong>Empresa:</strong> Grupo Guia (Segmento Construção Civil)</p>
+  <p><strong>Descrição da vaga:</strong> Vagas para estudantes de Administração, Eng. Civil ou áreas correlatas. Necessário conhecimento em Pacote Office.</p>
+  <p><strong>Salário:</strong> R$ 1.300,00</p>
+  <p><strong>Local:</strong> Uberaba | Curitiba/PR.</p>
+  <p><strong>Benefícios:</strong> VT (R$ 12,00 p/dia) e Seguro de Vida.</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5547989111180?text=Tenho%20interesse%20na%20vaga%20de%20Estagio%20em%20Curitiba" target="_blank">(47) 9 8911-1180</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Para a vaga de compras, possuir CNH B e estar cursando áreas técnicas de Edificações é um diferencial.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Porteiro para Obras</strong></h3>
+  <p><strong>Empresa:</strong> Grupo Perímetro</p>
+  <p><strong>Descrição da vaga:</strong> Atuação em escala 12x36 (06h às 18h). Requer disponibilidade para trabalhar em obras.</p>
+  <p><strong>Salário:</strong> R$ 2.031,57</p>
+  <p><strong>Local:</strong> Vila Andrade - São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> Assistência odontológica, Seguro de vida, Vale-alimentação, Vale-refeição e Vale-transporte.</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511994486812?text=Tenho%20interesse%20na%20vaga%20de%20Porteiro%20em%20Vila%20Andrade" target="_blank">(11) 99448-6812</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Ter experiência anterior na função e fácil acesso à região da Vila Andrade.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Auxiliar de Limpeza (Feminino)</strong></h3>
+  <p><strong>Empresa:</strong> Grupo Perímetro</p>
+  <p><strong>Descrição da vaga:</strong> Escala 5x2, das 06h às 15h48. Necessário ter experiência comprovada na função.</p>
+  <p><strong>Salário:</strong> A combinar</p>
+  <p><strong>Local:</strong> Penha - São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> Informados na entrevista (Padrão do grupo: VT, VR, VA).</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511994486812?text=Tenho%20interesse%20na%20vaga%20de%20Auxiliar%20de%20Limpeza%20na%20Penha" target="_blank">(11) 99448-6812</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Residir na Zona Leste (região da Penha) e possuir referências de empregos anteriores.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Auxiliar de Limpeza Hospitalar</strong></h3>
+  <p><strong>Empresa:</strong> Grupo Perímetro</p>
+  <p><strong>Descrição da vaga:</strong> Vaga masculina e feminina. Escala 12x36, das 10h às 22h. Necessário experiência na área hospitalar.</p>
+  <p><strong>Salário:</strong> A combinar</p>
+  <p><strong>Local:</strong> Ipiranga - São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> Informados na entrevista (Padrão do grupo: VT, VR, VA).</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511994486812?text=Tenho%20interesse%20na%20vaga%20de%20Limpeza%20Hospitalar%20no%20Ipiranga" target="_blank">(11) 99448-6812</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Conhecimento técnico em higienização hospitalar e disponibilidade total para o horário 10h-22h.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Conferente de Carga</strong></h3>
+  <p><strong>Empresa:</strong> Transribeiro</p>
+  <p><strong>Descrição da vaga:</strong> Requer Ensino Médio completo e experiência comprovada na função de conferência.</p>
+  <p><strong>Salário:</strong> A combinar</p>
+  <p><strong>Local:</strong> Osasco, Embu das Artes ou Taboão da Serra/SP.</p>
+  <p><strong>Benefícios:</strong> Vale-Transporte e Refeição (Padrão Logística).</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511991135097?text=Tenho%20interesse%20na%20vaga%20de%20Conferente%20de%20Carga" target="_blank">(11) 99113-5097</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Experiência sólida em transportadoras e disponibilidade para atuar nas regiões de Osasco ou Embu.
   </div>
 </div>
 
 <div class="vaga">
-  <h3><strong>Ajudante de Cozinha, Garçom, Cumim, Ajudante de Bar e Monitora</strong></h3>
+  <h3><strong>Limpador de Vidros (Vagas Noturnas)</strong></h3>
+  <p><strong>Empresa:</strong> Não informada (Mutirão de Emprego)</p>
+  <p><strong>Descrição da vaga:</strong> 120 oportunidades para atuação no período noturno. Necessário experiência comprovada em carteira como limpador de vidros.</p>
+  <p><strong>Salário:</strong> R$ 2.416,00 + R$ 315,00 (Assiduidade)</p>
+  <p><strong>Local:</strong> Zona Sul – São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> VR (R$ 21,80/dia), VA (R$ 151,00) e Vale-Transporte.</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511937086760?text=Tenho%20interesse%20na%20vaga%20de%20Limpador%20de%20Vidros%20Zona%20Sul" target="_blank">(11) 93708-6760</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Requisito obrigatório residir na Zona Sul de São Paulo e possuir disponibilidade para trabalhar à noite.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Auxiliar de Limpeza (Vagas Noturnas)</strong></h3>
+  <p><strong>Empresa:</strong> Não informada (Mutirão de Emprego)</p>
+  <p><strong>Descrição da vaga:</strong> Atuação noturna. Não é necessário experiência anterior. Oportunidade para início imediato via mutirão presencial.</p>
+  <p><strong>Salário:</strong> R$ 2.204,40 + R$ 315,00 (Assiduidade)</p>
+  <p><strong>Local:</strong> Zona Sul – São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> VR (R$ 21,80/dia), VA (R$ 151,00) e Vale-Transporte.</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511937086760?text=Tenho%20interesse%20na%20vaga%20de%20Auxiliar%20de%20Limpeza%20Zona%20Sul" target="_blank">(11) 93708-6760</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Residir obrigatoriamente na Zona Sul e ter disponibilidade para entrevista presencial nesta sexta-feira (13/03).
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Copeira</strong></h3>
   <p><strong>Empresa:</strong> Não informada</p>
-  <p><strong>Descrição da vaga:</strong> Vagas para o período noturno em diversas funções: Ajudante de Cozinha, Garçom, Cumim, Ajudante de Bar e Monitora para Espaço Kids. Necessário morar nas proximidades do bairro de Patamares.</p>
-  <p><strong>Salário:</strong> Não informado</p>
-  <p><strong>Horário:</strong> Período Noturno</p>
-  <p><strong>Local:</strong> Patamares, Salvador / BA</p>
-  <p><strong>Benefícios:</strong> Não informados</p>
+  <p><strong>Descrição da vaga:</strong> Vaga feminina para o Aeroporto de Curitiba. Escala 6x2 (13:10 às 21:30). Não precisa de experiência anterior.</p>
+  <p><strong>Salário:</strong> R$ 1.861,93</p>
+  <p><strong>Local:</strong> Aeroporto de Curitiba – PR.</p>
+  <p><strong>Benefícios:</strong> VR (R$ 22,00 por dia) e Vale-Transporte.</p>
   <p><strong>Contato:</strong><br>
-    WhatsApp: <a href="https://wa.me/5571981514106">(71) 98151-4106</a>
+    WhatsApp: <a href="https://wa.me/5511937086760?text=Tenho%20interesse%20na%20vaga%20de%20Copeira%20Aeroporto%20Curitiba" target="_blank">(11) 93708-6760</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Residir próximo ao local de trabalho (Patamares) e ter disponibilidade total para o horário noturno.
+    <strong>Como se destacar:</strong> Residir em Curitiba e possuir disponibilidade para trabalhar em escala 6x2 no período da tarde/noite.
   </div>
 </div>
 
 <div class="vaga">
-  <h3><strong>Estágio Técnico em Eletrotécnica / Eletromecânica</strong></h3>
-  <p><strong>Empresa:</strong> IEL / Seli'a Feira</p>
-  <p><strong>Descrição da vaga:</strong> Apoio em instalações e manutenções elétricas, suporte na manutenção predial e de equipamentos biomédicos, além de suporte no tratamento de água. Requisito: Cursando Técnico em Eletrotécnica (2º ao 3º módulo).</p>
-  <p><strong>Salário:</strong> R$ 600,00 (Bolsa auxílio)</p>
-  <p><strong>Horário:</strong> Segunda a sábado, das 07:00 às 12:00 (30h semanais)</p>
-  <p><strong>Local:</strong> Feira de Santana / BA</p>
-  <p><strong>Benefícios:</strong> Auxílio Transporte de R$ 5,15 por dia estagiado.</p>
+  <h3><strong>Auxiliar de PCP / Segurança / Motorista / Produção</strong></h3>
+  <p><strong>Empresa:</strong> Jordanesia Alimentos</p>
+  <p><strong>Descrição da vaga:</strong> Diversas oportunidades: Auxiliar de PCP (com exp. em frigorífico), Técnico de Segurança do Trabalho, Jovem Aprendiz (18+ anos), Motorista para Caminhão Pequeno e Auxiliar de Produção (Vaga Masculina).</p>
+  <p><strong>Salário:</strong> A combinar</p>
+  <p><strong>Local:</strong> Cajamar (Jordanesia) - SP e Região.</p>
+  <p><strong>Benefícios:</strong> Informados na entrevista.</p>
   <p><strong>Contato:</strong><br>
-    Site: <a href="https://www.ielbahia.com.br">www.ielbahia.com.br</a><br>
-    WhatsApp: <a href="https://wa.me/557536029732">(75) 3602-9732</a>
+    WhatsApp: <a href="https://wa.me/5511914206030?text=Tenho%20interest%20nas%20vagas%20da%20Jordanesia%20Alimentos" target="_blank">(11) 91420-6030</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar interesse técnico em equipamentos biomédicos e disponibilidade para atuar aos sábados. Código da vaga: 23753.
+    <strong>Como se destacar:</strong> Para PCP, destaque sua experiência no ramo de alimentos/frigorífico. Para as demais, residir em Cajamar ou proximidades.
   </div>
 </div>
 
+<hr>
 
 <div class="vaga">
-  <h3><strong>Estágio Técnico em Administração</strong></h3>
-  <p><strong>Empresa:</strong> IEL / Seli'a Feira</p>
-  <p><strong>Descrição da vaga:</strong> Atendimento presencial e telefônico, suporte em agendamentos, ordens de serviço, pedidos de peças e organização da recepção. Requisito: Cursando Técnico em Administração (1º ao 3º período).</p>
-  <p><strong>Salário:</strong> R$ 1.000,00 (Bolsa auxílio)</p>
-  <p><strong>Horário:</strong> Segunda a sexta, das 08:00 às 12:00 e 14:00 às 16:00 (30h semanais)</p>
-  <p><strong>Local:</strong> Feira de Santana / BA</p>
-  <p><strong>Benefícios:</strong> Auxílio Transporte de R$ 100,00.</p>
+  <h3><strong>Representante I – Logística (Mais de 500 vagas)</strong></h3>
+  <p><strong>Empresa:</strong> Shopee (Início Imediato)</p>
+  <p><strong>Descrição da vaga:</strong> Oportunidade para primeiro emprego em logística. Contrato de 180 dias com chances de efetivação. Escalas 6x1 ou 6x2 em turnos tarde ou noite.</p>
+  <p><strong>Salário:</strong> R$ 2.110,00 + Cesta Básica (R$ 280,00)</p>
+  <p><strong>Local:</strong> Franco da Rocha/SP (Atende diversas regiões com fretado).</p>
+  <p><strong>Benefícios:</strong> Refeição no local, Fretado (atende SP, Osasco, Jundiaí, Cajamar e mais) ou VT.</p>
   <p><strong>Contato:</strong><br>
-    Site: <a href="https://www.ielbahia.com.br">www.ielbahia.com.br</a><br>
-    WhatsApp: <a href="https://wa.me/557536029732">(75) 3602-9732</a>
+    Inscrição Online: <a href="https://forms.office.com/r/rfTFTefhag" target="_blank">Clique aqui para preencher o formulário</a><br>
+    Dúvidas WhatsApp: <a href="https://wa.me/5511954666543?text=Tenho%20interesse%20nas%20vagas%20da%20Shopee%20em%20Franco%20da%20Rocha" target="_blank">(11) 95466-6543 (Thais Ruiz)</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Excelente comunicação verbal e habilidade em lidar com fluxo de clientes e organização de processos. Código da vaga: 23767.
-  </div>
-</div>
-
-
-<div class="vaga">
-  <h3><strong>Auxiliar de Cozinha</strong></h3>
-  <p><strong>Empresa:</strong> Amor à Primeira Pizza</p>
-  <p><strong>Descrição da vaga:</strong> Atuar no suporte à cozinha da pizzaria. Vaga destinada ao sexo masculino. Não precisa ter experiência, mas o candidato deve ser ágil, organizado e gostar de trabalhar em equipe.</p>
-  <p><strong>Salário:</strong> Não informado</p>
-  <p><strong>Horário:</strong> Não informado</p>
-  <p><strong>Local:</strong> Feira de Santana / BA</p>
-  <p><strong>Benefícios:</strong> Não informados</p>
-  <p><strong>Contato:</strong><br>
-    WhatsApp: <a href="https://wa.me/5575991983333">(75) 99198-3333</a>
-  </p>
-  <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar agilidade e facilidade em trabalhar sob pressão em ambiente de cozinha.
+    <strong>Como se destacar:</strong> Possuir Ensino Fundamental completo e disponibilidade para os turnos T2 ou T3. Entrevistas online já estão ocorrendo!
   </div>
 </div>
 
 <div class="vaga">
-  <h3><strong>Vendedor Externo</strong></h3>
-  <p><strong>Empresa:</strong> Making Soluções</p>
-  <p><strong>Descrição da vaga:</strong> Atuação com abordagem comercial em campo, captação de novos clientes, conversão de leads e apoio no processo de cadastro. Requer ensino médio completo, experiência com vendas externas ou atendimento, boa comunicação e conhecimento básico em aplicativos de celular.</p>
-  <p><strong>Salário:</strong> Não informado</p>
-  <p><strong>Horário:</strong> Segunda a sábado</p>
-  <p><strong>Local:</strong> Santo Estêvão / BA</p>
-  <p><strong>Benefícios:</strong> Não informados</p>
+  <h3><strong>Aux. Administrativo / Produção / Qualidade / Líder</strong></h3>
+  <p><strong>Empresa:</strong> Indústria de Alimentos</p>
+  <p><strong>Descrição da vaga:</strong> Oportunidades para Auxiliar Administrativo, Ajudante de Carga e Descarga, Líder de Produção, Auxiliar de Produção e Auxiliar de Qualidade/Nutricionista.</p>
+  <p><strong>Salário:</strong> R$ 2.300,00 (Líder a combinar)</p>
+  <p><strong>Local:</strong> São Roque - SP.</p>
+  <p><strong>Benefícios:</strong> Vale Transporte e Refeição no local (café e almoço).</p>
   <p><strong>Contato:</strong><br>
-    E-mail: <a href="mailto:coordenacao99food@makingsolucoes.com.br">coordenacao99food@makingsolucoes.com.br</a><br>
-    WhatsApp: <a href="https://wa.me/5585920023427">(85) 92002-3427</a>
+    WhatsApp: <a href="https://wa.me/5511998385771?text=Tenho%20interesse%20na%20vaga%20da%20Industria%20de%20Alimentos%20em%20Sao%20Roque" target="_blank">(11) 99838-5771</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar forte capacidade de argumentação e autonomia para organização das rotas de vendas externas.
+    <strong>Como se destacar:</strong> Possuir disponibilidade para trabalhar em horário comercial de segunda a sexta e residir em São Roque ou proximidades.
   </div>
 </div>
 
+<hr>
+
 <div class="vaga">
-  <h3><strong>Estágio Administrativo / RH</strong></h3>
-  <p><strong>Empresa:</strong> LongevCare - Saúde Domiciliar</p>
-  <p><strong>Descrição da vaga:</strong> Apoio nos processos de recrutamento e seleção, organização de documentos e arquivos, lançamentos em planilhas e sistemas internos e suporte geral à equipe. Requisito: Cursando Administração, RH ou áreas afins (a partir do 5º período) e conhecimento básico em Pacote Office.</p>
-  <p><strong>Salário:</strong> R$ 750,00 (Bolsa auxílio) + R$ 150,00 (Ajuda de custo)</p>
-  <p><strong>Horário:</strong> Segunda a sexta, 6h/dia</p>
-  <p><strong>Local:</strong> Não informado (Empresa de Saúde Domiciliar)</p>
-  <p><strong>Benefícios:</strong> Ajuda de custo.</p>
+  <h3><strong>Corretor de Imóveis (Início Imediato)</strong></h3>
+  <p><strong>Empresa:</strong> Incorporadora EPH</p>
+  <p><strong>Descrição da vaga:</strong> Atuar com vendas de imóveis. A empresa oferece treinamento completo, suporte e auxílio no TTI. Não precisa ter experiência anterior.</p>
+  <p><strong>Salário:</strong> Comissões (Ganhos acima de R$ 6.000 por venda) + Premiações</p>
+  <p><strong>Local:</strong> Itapevi - SP.</p>
+  <p><strong>Benefícios:</strong> Plano de incentivo mensal, Plano de crescimento (EPH Elite) e Treinamento.</p>
   <p><strong>Contato:</strong><br>
-    E-mail: <a href="mailto:rh@longevcare.com.br">rh@longevcare.com.br</a>
+    WhatsApp: <a href="https://wa.me/5511910382836?text=Tenho%20interesse%20na%20vaga%20de%20Corretor%20em%20Itapevi" target="_blank">(11) 91038-2836</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar proatividade, vontade de aprender e boa capacidade de organização com arquivos e planilhas.
+    <strong>Como se destacar:</strong> Ter perfil comercial agressivo, vontade de crescer e disponibilidade para início imediato em Itapevi.
   </div>
 </div>
 
-<div class="vaga">
-  <h3><strong>Estágio de Cobrança</strong></h3>
-  <p><strong>Empresa:</strong> RT Rastreadores</p>
-  <p><strong>Descrição da vaga:</strong> Apoio nas cobranças, contato com clientes via telefone e WhatsApp, atualização de planilhas/sistemas e organização de informações financeiras. Requisito: Ensino médio completo e cursando a partir do 1º semestre de Adm ou Gestão Comercial.</p>
-  <p><strong>Salário:</strong> R$ 600,00 (Bolsa estágio)</p>
-  <p><strong>Horário:</strong> Segunda a sexta, das 08:00 às 12:00</p>
-  <p><strong>Local:</strong> Salvador / BA</p>
-  <p><strong>Benefícios:</strong> Vale Transporte.</p>
-  <p><strong>Contato:</strong><br>
-    E-mail: <a href="mailto:talentosrtrastreadores@gmail.com">talentosrtrastreadores@gmail.com</a>
-  </p>
-  <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Possuir boa fluência verbal e escrita, além de domínio intermediário do Pacote Office.
-  </div>
-</div>
+<hr>
 
 <div class="vaga">
-  <h3><strong>Fisioterapeuta, Massoterapeuta, Mordomo e Téc. Manutenção Predial</strong></h3>
-  <p><strong>Empresa:</strong> Não informada</p>
-  <p><strong>Descrição da vaga:</strong> Oportunidades para profissionais com experiência no ramo Hospitalar ou Hoteleiro nas funções listadas.</p>
-  <p><strong>Salário:</strong> Não informado</p>
-  <p><strong>Horário:</strong> Não informado</p>
-  <p><strong>Local:</strong> Salvador / BA</p>
-  <p><strong>Benefícios:</strong> Não informados</p>
+  <h3><strong>Marceneiro (Temporário)</strong></h3>
+  <p><strong>Empresa:</strong> Jund Empregos (Construção Civil)</p>
+  <p><strong>Descrição da vaga:</strong> Execução de móveis sob medida, montagem em obras e leitura de projetos. Necessário experiência anterior e manuseio de máquinas de marcenaria.</p>
+  <p><strong>Salário:</strong> R$ 3.000,00</p>
+  <p><strong>Local:</strong> Zona Norte - São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> Vale Transporte e Alimentação fornecida pela empresa.</p>
   <p><strong>Contato:</strong><br>
-    E-mail: <a href="mailto:rhtalentos77@gmail.com">rhtalentos77@gmail.com</a>
+    WhatsApp: <a href="https://wa.me/5511989753480?text=Tenho%20interesse%20na%20vaga%20de%20Marceneiro%20Zona%20Norte" target="_blank">(11) 98975-3480</a><br>
+    E-mail: <a href="mailto:vagas@jundempregos.com.br">vagas@jundempregos.com.br</a>
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> É indispensável informar a vaga pretendida no assunto do e-mail e destacar a experiência no setor de hotelaria ou hospitalar.
-  </div>
-</div>
-
-<div class="vaga">
-  <h3><strong>Coordenador e Assistente de Hotelaria, Assist. de Atendimento Financeiro e Recepcionista</strong></h3>
-  <p><strong>Empresa:</strong> Não informada</p>
-  <p><strong>Descrição da vaga:</strong> Vagas para níveis de coordenação, assistência e recepção. Requisito obrigatório: Experiência prévia no ramo Hospitalar ou Hoteleiro.</p>
-  <p><strong>Salário:</strong> Não informado</p>
-  <p><strong>Horário:</strong> Não informado</p>
-  <p><strong>Local:</strong> Salvador / BA</p>
-  <p><strong>Benefícios:</strong> Não informados</p>
-  <p><strong>Contato:</strong><br>
-    E-mail: <a href="mailto:rhtalentos77@gmail.com">rhtalentos77@gmail.com</a>
-  </p>
-  <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Enfatizar competências de atendimento ao público e gestão de processos em ambientes de alto fluxo como hospitais ou hotéis.
-  </div>
-</div>
-
-<div class="vaga">
-  <h3><strong>Estagiário de Atendimento</strong></h3>
-  <p><strong>Empresa:</strong> Mundo Verde</p>
-  <p><strong>Descrição da vaga:</strong> Atendimento ao cliente e suporte em vendas. Início imediato. Requisito: Estar cursando Nível Médio ou Técnico.</p>
-  <p><strong>Salário:</strong> Não informado</p>
-  <p><strong>Horário:</strong> 13:00 às 18:00</p>
-  <p><strong>Local:</strong> Não informado (Unidade Mundo Verde)</p>
-  <p><strong>Benefícios:</strong> Não informados</p>
-  <p><strong>Contato:</strong><br>
-    E-mail: <a href="mailto:vagasrhssa2022@gmail.com">vagasrhssa2022@gmail.com</a>
-  </p>
-  <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar "traquejo" em vendas e perfil comunicativo que goste de interagir com pessoas.
-  </div>
-</div>
-
-<div class="vaga">
-  <h3><strong>Chapeiro</strong></h3>
-  <p><strong>Empresa:</strong> Não informada (Padaria)</p>
-  <p><strong>Descrição da vaga:</strong> Atuação em chapa de padaria. É obrigatório possuir experiência comprovada com chapa.</p>
-  <p><strong>Salário:</strong> R$ 1.621,00 a R$ 1.975,00 (Dependendo da experiência)</p>
-  <p><strong>Horário:</strong> 06:00 às 14:20</p>
-  <p><strong>Local:</strong> Pituba, Salvador / BA</p>
-  <p><strong>Benefícios:</strong> Vale transporte, plano odontológico, seguro de vida e café da manhã no local.</p>
-  <p><strong>Contato:</strong><br>
-    WhatsApp: <a href="https://wa.me/5571996116703">(71) 9 9611-6703</a>
-  </p>
-  <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Demonstrar agilidade no preparo de lanches em horários de pico e domínio técnico no manuseio da chapa.
+    <strong>Como se destacar:</strong> Ter fácil acesso à Zona Norte de SP e habilidade técnica comprovada em acabamento e instalação de peças.
   </div>
 </div>
 
 <div class="vaga">
   <h3><strong>Serviços Gerais</strong></h3>
-  <p><strong>Empresa:</strong> Não informada</p>
-  <p><strong>Descrição da vaga:</strong> Atividades de limpeza e conservação. Requisitos: Ter experiência comprovada em carteira e residir próximo ao bairro de Ondina.</p>
-  <p><strong>Salário:</strong> Salário Mínimo</p>
-  <p><strong>Horário:</strong> Não informado</p>
-  <p><strong>Local:</strong> Ondina, Salvador / BA</p>
-  <p><strong>Benefícios:</strong> Alimentação e Transporte.</p>
+  <p><strong>Empresa:</strong> Okinalar S Komesu</p>
+  <p><strong>Descrição da vaga:</strong> Atividades de serviços gerais com foco em organização e trabalho em equipe. Necessário Ensino Médio completo e experiência na função.</p>
+  <p><strong>Salário:</strong> A combinar</p>
+  <p><strong>Local:</strong> Av. Coronel Sezefredo Fagundes, 1752 - São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> Informados na entrevista.</p>
   <p><strong>Contato:</strong><br>
-    WhatsApp: <a href="https://wa.me/5571999066211">(71) 9 9906-6211</a>
+    WhatsApp: <a href="https://wa.me/5511914206030?text=Tenho%20interesse%20na%20vaga%20de%20Servicos%20Gerais" target="_blank">Candidatar-se via WhatsApp</a> (Ou entregue o currículo na loja)
   </p>
   <div class="como-se-destacar">
-    <strong>Como se destacar:</strong> Ter referências anteriores na função e disponibilidade imediata.
+    <strong>Como se destacar:</strong> Demonstrar habilidade em vendas, pontualidade e possuir total disponibilidade de horário.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Aux. Administrativo / Produção / Qualidade / Líder</strong></h3>
+  <p><strong>Empresa:</strong> Indústria de Alimentos</p>
+  <p><strong>Descrição da vaga:</strong> Vagas para Auxiliar Administrativo, Carga e Descarga, Líder de Produção, Auxiliar de Produção e Qualidade/Nutricionista.</p>
+  <p><strong>Salário:</strong> R$ 2.300,00 (Líder a combinar)</p>
+  <p><strong>Local:</strong> São Roque - SP.</p>
+  <p><strong>Benefícios:</strong> Vale Transporte e Refeição no local (café e almoço).</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511998385771?text=Tenho%20interesse%20na%20vaga%20da%20Industria%20de%20Alimentos%20em%20Sao%20Roque" target="_blank">(11) 99838-5771</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Residir em São Roque e possuir disponibilidade para trabalhar em horário comercial de segunda a sexta.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Corretor de Imóveis (Início Imediato)</strong></h3>
+  <p><strong>Empresa:</strong> Incorporadora EPH</p>
+  <p><strong>Descrição da vaga:</strong> Atuar em Itapevi com vendas de imóveis. Não precisa ter experiência. Oferecem treinamento completo e auxílio no TTI.</p>
+  <p><strong>Salário:</strong> Ganhos acima de R$ 6.000 por venda + Comissões</p>
+  <p><strong>Local:</strong> Itapevi - SP.</p>
+  <p><strong>Benefícios:</strong> Plano de incentivo mensal, premiações constantes e plano de carreira (EPH Elite).</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511910382836?text=Tenho%20interesse%20na%20vaga%20de%20Corretor%20em%20Itapevi" target="_blank">(11) 91038-2836</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Possuir forte perfil comercial, vontade de crescer e disponibilidade para início imediato.
+  </div>
+</div>
+
+<hr>
+
+<div class="vaga">
+  <h3><strong>Marceneiro (Temporário)</strong></h3>
+  <p><strong>Empresa:</strong> Jund Empregos (Área de Construção Civil)</p>
+  <p><strong>Descrição da vaga:</strong> Execução de móveis sob medida, montagem e instalação em obras, leitura de projetos técnicos. Requer experiência anterior.</p>
+  <p><strong>Salário:</strong> R$ 3.000,00</p>
+  <p><strong>Local:</strong> Zona Norte - São Paulo/SP.</p>
+  <p><strong>Benefícios:</strong> VT + Alimentação fornecida pela empresa.</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: <a href="https://wa.me/5511989753480?text=Tenho%20interesse%20na%20vaga%20de%20Marceneiro%20Zona%20Norte" target="_blank">(11) 98975-3480</a><br>
+    E-mail: <a href="mailto:vagas@jundempregos.com.br">vagas@jundempregos.com.br</a>
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Possuir fácil acesso à Zona Norte e domínio pleno de máquinas de marcenaria.
+  </div>
+</div>
+
+<div class="vaga">
+  <h3><strong>Operador(a) de Loja</strong></h3>
+  <p><strong>Empresa:</strong> Rick Doces</p>
+  <p><strong>Descrição da vaga:</strong> Atendimento ao cliente, reposição de mercadorias e operação de caixa. Exige mínimo de 6 meses de experiência com caixa e facilidade de acesso ao centro de SP.</p>
+  <p><strong>Salário:</strong> R$ 1.995,00 + Bônus por meta.</p>
+  <p><strong>Horário:</strong> Escala 6x1 (Fechamento) - Seg. a sex. (13h10 às 21h20), sáb. (10h20 às 19h20) e dom. (10h às 18h20).</p>
+  <p><strong>Local:</strong> São Paulo - SP (Unidades Brigadeiro ou Vergueiro).</p>
+  <p><strong>Benefícios:</strong> Vale-alimentação (R$ 200), VR (domingos e feriados), Day off, Convênio SESC, Telemedicina e Totalpass.</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: (11) 98791-5714 (Falar com Danyele).
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Demonstre vontade de aprender e foco em "encantar o cliente", que são os diferenciais buscados pela empresa.
+  </div>
+</div>
+
+<div class="vaga">
+  <h3><strong>Promotor(a) de Vendas</strong></h3>
+  <p><strong>Empresa:</strong> Nova União Merchandising</p>
+  <p><strong>Descrição da vaga:</strong> Abastecimento, limpeza de gôndola, controle de estoque virtual e ativação de pontos extras (FIFO). Contrato CLT.</p>
+  <p><strong>Salário:</strong> R$ 2.035,73.</p>
+  <p><strong>Horário:</strong> Segunda a sexta (08h às 17h) e sábados (08h às 12h).</p>
+  <p><strong>Local:</strong> São Paulo - SP (Região do Tucuruvi).</p>
+  <p><strong>Benefícios:</strong> Vale Refeição (R$ 25,40/dia), Vale Alimentação (R$ 130,00) e Vale Transporte.</p>
+  <p><strong>Contato:</strong><br>
+    WhatsApp: (11) 97670-5246 (Falar com Alessandra).
+  </p>
+  <div class="como-se-destacar">
+    <strong>Como se destacar:</strong> Mencione sua experiência com a técnica FIFO e organização de gôndolas para acelerar sua aprovação.
   </div>
 </div>
 
 
-</div>
 
-<footer>
-  © 2026 ConectaTrampo Bahia  
-  <br>
-  Este site divulga vagas públicas e gratuitas. Nunca pague para participar de processos seletivos.
-</footer>
+  <footer>
+    <p>© 2026 ConectaTrampo SP<br>
+    Organizando as melhores oportunidades da capital e região metropolitana.</p>
+  </footer>
 
-<script>
-  const busca = document.getElementById("busca");
-
-  busca.addEventListener("input", () => {
-    const termo = busca.value.toLowerCase();
-    const vagas = document.querySelectorAll(".vaga");
-
-    vagas.forEach(vaga => {
-      const texto = vaga.textContent.toLowerCase();
-      vaga.style.display = texto.includes(termo) ? "block" : "none";
+  <script>
+    const inputBusca = document.getElementById("busca-vagas");
+    inputBusca.addEventListener("input", () => {
+      const termo = inputBusca.value.toLowerCase();
+      const vagas = document.querySelectorAll(".vaga-card");
+      vagas.forEach(vaga => {
+        vaga.style.display = vaga.textContent.toLowerCase().includes(termo) ? "block" : "none";
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
